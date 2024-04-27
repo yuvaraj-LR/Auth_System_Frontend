@@ -4,10 +4,10 @@
 
 <section>
 
-    <h1>I am in home page.</h1>
+    <h1>I am in forgetpassword page.</h1>
 
 </section>
 
 <style>
-    
+
 </style>

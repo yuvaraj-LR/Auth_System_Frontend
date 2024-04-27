@@ -4,7 +4,7 @@
 
 <section>
 
-    <h1>I am in home page.</h1>
+    <h1>I am in signUP page.</h1>
 
 </section>
 

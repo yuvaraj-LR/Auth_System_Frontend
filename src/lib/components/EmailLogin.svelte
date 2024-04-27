@@ -1,13 +1,11 @@
 <script>
-
 </script>
 
 <section>
-
-    <h1>I am in home page.</h1>
+    I am email_login comp. is the title.
 
 </section>
 
 <style>
-    
+
 </style>
