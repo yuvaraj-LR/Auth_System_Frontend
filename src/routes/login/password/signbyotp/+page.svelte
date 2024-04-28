@@ -1,21 +1,25 @@
 <script>
-    import SocialMediaLogin from "$lib/components/SocialMediaLogin.svelte";
-    import Signup from "$lib/components/Signup.svelte";
+    import ForgetPassword from "$lib/components/ForgetPassword.svelte";
     import SupportImage from "$lib/components/SupportImage.svelte";
+
+    export let form;
+    export let data;
+
+    const email = "yuvaraj@cn.com";
 </script>   
 
 <section>
     <div class="container flex flex_row">
         <div class="background">
-            <SupportImage title="Ready to take the first step!!!" content="Sign up now and let's make magic happen together!" imageLink="/images/images/background-signup.png"/>
+            <SupportImage title="Quick, convenient, secure" content="Unlock the door to your digital world with the key of OTP." imageLink="/images/images/background-signup.png"/>
         </div>  
-        <div class="content flex flex_col flex_space_between">
+        <div class="content flex flex_col">
             <div class="social_login w-100">
-                <SocialMediaLogin title="Sign Up" />
+                <h2 class="uppercase text_center">Sign By OTP</h2>
             </div>
 
             <div class="email_login w-100">
-                <Signup />
+                <ForgetPassword {email} {form} {data}/>
             </div>
         </div>
     </div>
@@ -29,6 +33,11 @@
     .content {
         margin: auto;
         padding: 40px 25px;
+    }
+
+    .back {
+        margin: 30px auto;
+        color: #925778;
     }
 
 

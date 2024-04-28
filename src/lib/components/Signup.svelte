@@ -3,26 +3,23 @@
 
 <section>
     <form action="" class="email_form">
-        <input type="email" name="email" id="email" class="inp" placeholder="Enter your Email" autocomplete="off">
+        <input type="text" name="name" id="name" class="inp" placeholder="Enter your name" autocomplete="off">
+        <input type="email" name="email" id="email" class="inp" placeholder="Enter your email" autocomplete="off">
+        <input type="text" name="number" id="number" class="inp" placeholder="Enter your number" autocomplete="off">
         <div class="password">
-            <input type="password" name="password" id="password" class="inp" placeholder="Enter password">
+            <input type="password" name="password" id="password" class="password_inp" placeholder="Enter password">
             <img src="/images/icons/eye-close-icon.svg" id="close-eye" alt="closed-eye" class="close_icon" width="25" onclick="openPassword(1)">
             <img src="/images/icons/eye-open-icon.svg" id="open-eye" alt="open-eye" class="close_icon hidden" width="25" onclick="openPassword(2)">
         </div>
 
-        <div class="forgetpassword">
-            <a href="/login/password/signbyotp" class="fget_pass">Sign via OTP?</a>
-            <a href="/login/password/forgetpassword" class="fget_pass margin_pass">Forget Password?</a>
-        </div>
-
         <button type="submit" class="log_btn">
-            <span>Sign In</span>
-            <img src="/images/icons/arrow-right-long-solid-right.svg" alt="right-arrow">
+            <img src="/images/icons/arrow-right-long-solid-left.svg" alt="right-arrow">
+            <span>Sign Up</span>
         </button>
 
         <p class="signin text_center">
-            <span>Start Now! Sign up here.</span>
-            <span><a href="/login/signup" class="uppercase ternary_txt">Sign up?</a></span>
+            <span>Familiar face? Sign in here. </span>
+            <span><a href="/login/signin" class="uppercase ternary_txt">Sign in?</a></span>
         </p>
     </form>
     <script>
@@ -60,24 +57,8 @@
         cursor: pointer;
     }
 
-    .fget_pass {
-        color: #925778;
-        display: flex;
-        justify-content: flex-end;
-        margin: 15px auto;
-    }
-
-    .fget_pass:hover {
-        text-decoration: underline;
-        cursor: pointer;
-    }
-
-    .margin_pass {
-        margin: 0 0 45px;
-    }
-
     .signin {
-        margin: 20px auto;
+        margin: 15px auto;
     }
 
     .log_btn {
@@ -89,9 +70,6 @@
     }
 
     @media(min-width: 768px) {
-        .margin_pass {
-            margin: 0 0 65px;
-        }
     }
 
 </style>

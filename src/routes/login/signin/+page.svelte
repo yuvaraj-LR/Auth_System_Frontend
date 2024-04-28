@@ -2,7 +2,7 @@
     import SocialMediaLogin from "$lib/components/SocialMediaLogin.svelte";
     import EmailLogin from "$lib/components/EmailLogin.svelte";
     import SupportImage from "$lib/components/SupportImage.svelte";
-</script>
+</script>   
 
 <section>
     <div class="container flex flex_row">
@@ -47,7 +47,7 @@
     @media (min-width: 1200px) {
         .content {
             width: 30%;
-            padding: 85px 50px;
+            padding: 50px;
         }
 
         .background {
@@ -55,7 +55,4 @@
             width: 70%;
         }
     }
-
-    
-
 </style>
