@@ -2,6 +2,8 @@
     import SocialMediaLogin from "$lib/components/SocialMediaLogin.svelte";
     import EmailLogin from "$lib/components/EmailLogin.svelte";
     import SupportImage from "$lib/components/SupportImage.svelte";
+
+    export let form;
 </script>   
 
 <section>
@@ -12,7 +14,7 @@
             </div>
 
             <div class="email_login w-100">
-                <EmailLogin />
+                <EmailLogin {form}/>
             </div>
         </div>
         <div class="background">

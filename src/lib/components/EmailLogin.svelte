@@ -1,11 +1,18 @@
 <script>
+    import { enhance } from "$app/forms";
+
+    export let form;
+
+    console.log(form, "form...");
+
+    let token;
 </script>
 
 <section>
-    <form action="" class="email_form">
-        <input type="email" name="email" id="email" class="inp" placeholder="Enter your Email" autocomplete="off">
+    <form method="post" class="email_form" use:enhance>
+        <input type="email" name="email" id="email" class="inp {form?.error?.username ? "error_border" : ""}" placeholder="Enter your Email" autocomplete="off" autofocus value="cs205114663@bhc.edu.in">
         <div class="password">
-            <input type="password" name="password" id="password" class="inp" placeholder="Enter password">
+            <input type="password" name="password" id="password" class="inp {form?.error?.password ? "error_border" : ""}" placeholder="Enter password" value="1234">
             <img src="/images/icons/eye-close-icon.svg" id="close-eye" alt="closed-eye" class="close_icon" width="25" onclick="openPassword(1)">
             <img src="/images/icons/eye-open-icon.svg" id="open-eye" alt="open-eye" class="close_icon hidden" width="25" onclick="openPassword(2)">
         </div>
@@ -25,6 +32,7 @@
             <span><a href="/login/signup" class="uppercase ternary_txt">Sign up?</a></span>
         </p>
     </form>
+    <div id="recaptcha" data-sitekey="{process.env.RECAPTCHA}" />
     <script>
         function openPassword(choice) {
             const closeEyeIcon = document.getElementById("close-eye");
@@ -41,6 +49,31 @@
                 passwordInput.type = "password";
             }
         }
+        
+        async function generateCaptcha() {
+            const siteKey = "6LePk50UAAAAAAMVdVXntpM-xrLezBXtD7jc_BEt";
+            console.log(siteKey, "keyyyy");
+            const recaptcha = await grecaptcha.execute(siteKey, {
+                action: "submit",
+            });
+            console.log(recaptcha, "reeeee");
+            token = recaptcha;
+            console.log(token, "token");
+            document.getElementById("recaptcha").value = token;
+        }
+        generateCaptcha();
+
+        const useremail = document.getElementById("email");
+        const password = document.getElementById("password");
+
+        useremail.addEventListener("keyup", () => {
+            useremail.classList.remove("error_border");
+        })
+
+        password.addEventListener("keyup", () => {
+            password.classList.remove("error_border");
+        })
+
     </script>
 </section>
 
