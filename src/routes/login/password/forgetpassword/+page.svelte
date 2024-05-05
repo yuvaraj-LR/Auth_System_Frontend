@@ -6,7 +6,8 @@
     export let form;
     export let data;
 
-    const email = "yuvaraj@cn.com";
+    const email = data.username;
+    const changepassword = true;
 </script>   
 
 <section>
@@ -20,7 +21,7 @@
             </div>
 
             <div class="email_login w-100">
-                <ForgetPassword {email} {form} {data}/>
+                <ForgetPassword {email} {form} {data} {changepassword}/>
             </div>
         </div>
     </div>

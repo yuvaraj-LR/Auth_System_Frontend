@@ -2,6 +2,9 @@
     import SocialMediaLogin from "$lib/components/SocialMediaLogin.svelte";
     import Signup from "$lib/components/Signup.svelte";
     import SupportImage from "$lib/components/SupportImage.svelte";
+
+    export let form;
+    console.log(form, "form in signup...");
 </script>   
 
 <section>
@@ -15,7 +18,7 @@
             </div>
 
             <div class="email_login w-100">
-                <Signup />
+                <Signup {form}/>
             </div>
         </div>
     </div>

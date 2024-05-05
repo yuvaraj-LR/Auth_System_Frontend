@@ -55,10 +55,6 @@ p {
     font-size: 1.3rem;
 }
 
-h1 {
-
-}
-
 .flex {
     display: flex;
 }
@@ -156,6 +152,29 @@ h1 {
 
 .error_border::placeholder {
     color: #e64343;
+}
+
+.high_error {
+    color: #e64343;
+    text-align: center;
+}
+
+.fget_pass {
+    color: #925778;
+    display: flex;
+    justify-content: flex-end;
+    margin: 15px auto;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    padding: 0;
+}
+
+.fget_pass:hover {
+    border: none;
+    outline: none;
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 @media(min-width: 768px) {

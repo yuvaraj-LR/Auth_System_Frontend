@@ -1,17 +1,23 @@
 <script>
     export let email;
+    console.log(email, "emaill...");
+    export let changePassword;
 
     export let form;
     export let data;
 
-    console.log(email, "email...");
+    email = (!email ? form?.error?.email : email);
+
+    const action = (changePassword ? "?/changePass" : "?/updatePass");
+    console.log(action, "action...");
+
 </script>
 
 <section>
-    <form action="" class="email_form">
+    <form method="post" action={action} class="email_form">
         <input type="email" name="email" id="email" class="inp" placeholder="Enter your email" value={email} autocomplete="off" disabled />
         
-        <div class="password">
+        <div class={changePassword ? "hidden" : "password"}>
             <input type="password" name="old-password" id="old-password" class="inp" placeholder="Old Password" autocomplete="off">
             <img src="/images/icons/eye-close-icon.svg" id="close-eye" alt="closed-eye" class="close_icon" width="25" onclick="openPassword(1)">
             <img src="/images/icons/eye-open-icon.svg" id="open-eye" alt="open-eye" class="close_icon hidden" width="25" onclick="openPassword(2)">

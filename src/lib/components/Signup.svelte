@@ -1,16 +1,22 @@
 <script>
+    import { enhance } from "$app/forms";
+    export let form;
+
+    console.log(form, "form...");
 </script>
 
 <section>
-    <form action="" class="email_form">
-        <input type="text" name="name" id="name" class="inp" placeholder="Enter your name" autocomplete="off">
-        <input type="email" name="email" id="email" class="inp" placeholder="Enter your email" autocomplete="off">
-        <input type="text" name="number" id="number" class="inp" placeholder="Enter your number" autocomplete="off">
+    <form method="post" action="?/signUp" class="email_form" use:enhance>
+        <input type="text" name="name" id="name" class="inp {form?.error?.name ? "error_border" : ""}" placeholder="Enter your name" autocomplete="off">
+        <input type="email" name="email" id="email" class="inp {form?.error?.email ? "error_border" : ""}" placeholder="Enter your email" autocomplete="off">
+        <input type="text" name="number" id="number" class="inp {form?.error?.number ? "error_border" : ""}" placeholder="Enter your number" autocomplete="off">
         <div class="password">
-            <input type="password" name="password" id="password" class="password_inp" placeholder="Enter password">
+            <input type="password" name="password" id="password" class="password_inp {form?.error?.name ? "error_border" : ""}" placeholder="Enter password">
             <img src="/images/icons/eye-close-icon.svg" id="close-eye" alt="closed-eye" class="close_icon" width="25" onclick="openPassword(1)">
             <img src="/images/icons/eye-open-icon.svg" id="open-eye" alt="open-eye" class="close_icon hidden" width="25" onclick="openPassword(2)">
         </div>
+
+        <p class="{form?.error?.invalidPass ? "high_error" : "hidden"}">{form?.error?.invalidPass}</p>
 
         <button type="submit" class="log_btn">
             <img src="/images/icons/arrow-right-long-solid-left.svg" alt="right-arrow">

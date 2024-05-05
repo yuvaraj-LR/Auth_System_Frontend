@@ -5,8 +5,11 @@
     export let form;
     export let data;
 
+    console.log(data, "dataa...");
+
     let email = data?.username;
-    const changePassword = false;
+    console.log(email, "emaill...");
+    const changePassword = true;
 </script>   
 
 <section>
@@ -16,7 +19,7 @@
         </div>  
         <div class="content flex flex_col ">
             <div class="social_login w-100">
-                <h2 class="uppercase text_center">Update Password</h2>
+                <h2 class="uppercase text_center">Change Password</h2>
             </div>
 
             <div class="email_login w-100">

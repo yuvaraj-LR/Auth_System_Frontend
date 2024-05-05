@@ -1,26 +1,25 @@
 <script>
     import { enhance } from "$app/forms";
-
     export let form;
 
     console.log(form, "form...");
-
-    let token;
 </script>
 
 <section>
-    <form method="post" class="email_form" use:enhance>
-        <input type="email" name="email" id="email" class="inp {form?.error?.username ? "error_border" : ""}" placeholder="Enter your Email" autocomplete="off" autofocus value="cs205114663@bhc.edu.in">
+    <form method="post" action="?/login" class="email_form" use:enhance>
+        <input type="email" name="email" id="email" class="inp {form?.error?.username ? "error_border" : ""}" placeholder="Enter your Email" autocomplete="off" autofocus>
         <div class="password">
-            <input type="password" name="password" id="password" class="inp {form?.error?.password ? "error_border" : ""}" placeholder="Enter password" value="1234">
+            <input type="password" name="password" id="password" class="inp {form?.error?.password ? "error_border" : ""}" placeholder="Enter password">
             <img src="/images/icons/eye-close-icon.svg" id="close-eye" alt="closed-eye" class="close_icon" width="25" onclick="openPassword(1)">
             <img src="/images/icons/eye-open-icon.svg" id="open-eye" alt="open-eye" class="close_icon hidden" width="25" onclick="openPassword(2)">
         </div>
 
         <div class="forgetpassword">
-            <a href="/login/password/signbyotp" class="fget_pass">Sign via OTP?</a>
-            <a href="/login/password/forgetpassword" class="fget_pass margin_pass">Forget Password?</a>
+            <button type="submit" class="fget_pass" formaction="?/signByOTP">Sign via OTP?</button>
+            <button type="submit" class="fget_pass" formaction="?/updatePass">Forget Password?</button>
         </div>
+
+        <p class="{form?.error?.invalidPass ? "high_error" : "hidden"}">{form?.error?.invalidPass}</p>
 
         <button type="submit" class="log_btn">
             <span>Sign In</span>
@@ -32,7 +31,6 @@
             <span><a href="/login/signup" class="uppercase ternary_txt">Sign up?</a></span>
         </p>
     </form>
-    <div id="recaptcha" data-sitekey="{process.env.RECAPTCHA}" />
     <script>
         function openPassword(choice) {
             const closeEyeIcon = document.getElementById("close-eye");
@@ -50,28 +48,17 @@
             }
         }
         
-        async function generateCaptcha() {
-            const siteKey = "6LePk50UAAAAAAMVdVXntpM-xrLezBXtD7jc_BEt";
-            console.log(siteKey, "keyyyy");
-            const recaptcha = await grecaptcha.execute(siteKey, {
-                action: "submit",
-            });
-            console.log(recaptcha, "reeeee");
-            token = recaptcha;
-            console.log(token, "token");
-            document.getElementById("recaptcha").value = token;
-        }
-        generateCaptcha();
-
         const useremail = document.getElementById("email");
         const password = document.getElementById("password");
 
         useremail.addEventListener("keyup", () => {
             useremail.classList.remove("error_border");
+            password.classList.remove("error_border");
         })
 
         password.addEventListener("keyup", () => {
             password.classList.remove("error_border");
+            useremail.classList.remove("error_border");
         })
 
     </script>
@@ -91,22 +78,6 @@
 
     .close_icon:hover {
         cursor: pointer;
-    }
-
-    .fget_pass {
-        color: #925778;
-        display: flex;
-        justify-content: flex-end;
-        margin: 15px auto;
-    }
-
-    .fget_pass:hover {
-        text-decoration: underline;
-        cursor: pointer;
-    }
-
-    .margin_pass {
-        margin: 0 0 45px;
     }
 
     .signin {
