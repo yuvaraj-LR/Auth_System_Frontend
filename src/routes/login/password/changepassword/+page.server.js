@@ -10,8 +10,12 @@ export const actions = {
         const formData = await request.formData();
 
         const email = formData.get("email");
+
+        console.log(email, "emaill...");
+
         const newPass = formData.get("new-password");
         const conPass = formData.get("confirm-password");
+        const token = formData.get("token");
 
         let errorMessage = {};
         if(!email || !newPass || conPass) {
@@ -29,19 +33,20 @@ export const actions = {
         const payload = {
             "email" : email,
             "newPassword" : newPass,
-            "confirmPassword" : conPass
+            "confirmPassword" : conPass,
+            "token" : token
         }
-        console.log(payload, "payloaddd....");
 
         const updatePass = await updatePassword(payload);
-        console.log(updatePass, "passs...");
+        console.log(updatePass, "passss");
         
         if(updatePass?.success) {
             console.log("logged successful.");
             cookies.set("token", updatePass?.token, {path: "/"});
             throw redirect(301, "/");    
         } else {
-            errorMessage.invalidPass = updatePass?.msg;
+            errorMessage.email = email;
+            errorMessage.invalidPass = updatePass?.error;
         }
 
         if(Object.keys(errorMessage).length !== 0) {

@@ -3,6 +3,8 @@
     import SupportImage from "$lib/components/SupportImage.svelte";
 
     export let form;
+    console.log(form, "formm..");
+
     export let data;
 
     console.log(data, "dataa...");

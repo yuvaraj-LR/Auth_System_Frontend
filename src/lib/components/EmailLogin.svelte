@@ -20,6 +20,7 @@
         </div>
 
         <p class="{form?.error?.invalidPass ? "high_error" : "hidden"}">{form?.error?.invalidPass}</p>
+        <p class="{form?.success ? "high_error" : "hidden"}">Reset Password Link has been sent your email.</p>
 
         <button type="submit" class="log_btn">
             <span>Sign In</span>

@@ -1,6 +1,5 @@
 <script>
     export let email;
-    console.log(email, "emaill...");
     export let changePassword;
 
     export let form;
@@ -9,14 +8,15 @@
     email = (!email ? form?.error?.email : email);
 
     const action = (changePassword ? "?/changePass" : "?/updatePass");
-    console.log(action, "action...");
-
 </script>
 
 <section>
     <form method="post" action={action} class="email_form">
-        <input type="email" name="email" id="email" class="inp" placeholder="Enter your email" value={email} autocomplete="off" disabled />
-        
+        <input type="eml" name="eml" id="eml" class="inp" placeholder="Enter your email" value={email} autocomplete="off" disabled/>
+
+        <input type="hidden" name="email" id="email" class="inp" placeholder="Enter your email" value={email} autocomplete="off" />
+        <input type="hidden" name="token" id="token" value="" />
+
         <div class={changePassword ? "hidden" : "password"}>
             <input type="password" name="old-password" id="old-password" class="inp" placeholder="Old Password" autocomplete="off">
             <img src="/images/icons/eye-close-icon.svg" id="close-eye" alt="closed-eye" class="close_icon" width="25" onclick="openPassword(1)">
@@ -24,13 +24,15 @@
         </div>
 
         <div class="password">
-            <input type="password" name="new-password" id="new-password" class="inp" placeholder="New Password" autocomplete="off">
+            <input type="password" name="new-password" id="new-password" class={form?.error?.newPass ? "error_border" : ""} placeholder="New Password" autocomplete="off">
 
             <img src="/images/icons/eye-close-icon.svg" id="close-eye-new" alt="closed-eye" class="close_icon" width="25" onclick="openConfirmPassword(1)">
             <img src="/images/icons/eye-open-icon.svg" id="open-eye-conf" alt="open-eye" class="close_icon hidden" width="25" onclick="openConfirmPassword(2)">
     
-            <input type="password" name="confirm-password" id="confirm-password" class="inp" placeholder="Confirm Password" autocomplete="off">
+            <input type="password" name="confirm-password" id="confirm-password" class={form?.error?.conPass ? "error_border" : ""} placeholder="Confirm Password" autocomplete="off">
         </div>
+
+        <p class="{form?.error?.invalidPass ? "high_error" : "hidden"}">{form?.error?.invalidPass}</p>
 
         <button type="submit" class="log_btn">
             <img src="/images/icons/arrow-right-long-solid-left.svg" alt="right-arrow">
@@ -74,6 +76,17 @@
                 confirmPasswordInput.type = "password";
             }
         }
+
+        function tokenIdentifier() {
+            let tokenInput = document.getElementById("token");
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const token = urlParams.get('token');
+
+            tokenInput.value = token;
+        }
+
+        tokenIdentifier();
     </script>
 </section>
 

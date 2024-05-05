@@ -93,8 +93,9 @@ export const actions = {
         console.log(sendPassResponse, "responsee..");
 
         if(sendPassResponse?.success) {
-            console.log("logged successful.");
-            throw redirect(301, `/login/password/changepassword?username=${username}&token=${sendPassResponse?.token}`);    
+            return {
+                "success": sendPassResponse?.success
+            }
         } else {
             errorMessage.email = username;
             errorMessage.invalidPass = sendPassResponse.msg;

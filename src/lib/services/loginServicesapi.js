@@ -90,7 +90,7 @@ export const sendForgetPasswordLink = async (payload) => {
 // Update password.
 export const updatePassword = async (payload) => {
     const options = {
-        method: "POST",
+        method: "PUT",
         body: JSON.stringify(payload),
         headers: {
             "Content-Type": "application/json"
