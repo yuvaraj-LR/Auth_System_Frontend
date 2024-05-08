@@ -103,6 +103,23 @@ export const updatePassword = async (payload) => {
     return response;
 }
 
+// Reset password.
+export const resetPassword = async (resetToken, payload) => {
+    console.log(resetToken, "resttt...");
+    const options = {
+        method: "PUT",
+        body: JSON.stringify(payload),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }
+
+    const resetPassResponse = await fetch(`${baseURL}password/reset?token=${resetToken}`, options);
+    const response = await resetPassResponse.json();
+
+    return response;
+}
+
 // Get user details.
 export const getUserDetails = async (token) => {
     const options = {

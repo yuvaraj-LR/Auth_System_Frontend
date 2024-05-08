@@ -1,8 +1,15 @@
-import { updatePassword } from "$lib/services/loginServicesapi";
+import { resetPassword } from "$lib/services/loginServicesapi";
 import { redirect } from "@sveltejs/kit";
 
-export async function load() {
-    
+export async function load({url}) {
+    const searchParams = new URLSearchParams(url.search);
+
+    const token = searchParams?.get("token");
+
+    return {
+        token
+    }
+
 }
 
 export const actions = {
@@ -10,9 +17,6 @@ export const actions = {
         const formData = await request.formData();
 
         const email = formData.get("email");
-
-        console.log(email, "emaill...");
-
         const newPass = formData.get("new-password");
         const conPass = formData.get("confirm-password");
         const token = formData.get("token");
@@ -32,12 +36,13 @@ export const actions = {
 
         const payload = {
             "email" : email,
-            "newPassword" : newPass,
+            "password" : newPass,
             "confirmPassword" : conPass,
-            "token" : token
         }
 
-        const updatePass = await updatePassword(payload);
+        // console.log(payload, "payloadd...");
+
+        const updatePass = await resetPassword(token, payload);
         console.log(updatePass, "passss");
         
         if(updatePass?.success) {
@@ -47,6 +52,7 @@ export const actions = {
         } else {
             errorMessage.email = email;
             errorMessage.invalidPass = updatePass?.error;
+            errorMessage.token = token;
         }
 
         if(Object.keys(errorMessage).length !== 0) {

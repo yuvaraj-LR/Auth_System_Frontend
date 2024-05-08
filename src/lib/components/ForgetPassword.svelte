@@ -6,6 +6,7 @@
     console.log(form, "formmm....");
 
     export let data;
+    const token = data?.token;
 
     email = (!email ? form?.error?.email : email);
 

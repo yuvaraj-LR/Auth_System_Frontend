@@ -6,17 +6,26 @@
     export let form;
     export let data;
 
-    email = (!email ? form?.error?.email : email);
+    const token = data?.token ? data?.token : data?.errorMessage?.token;
+    console.log(token, "token...");
 
-    const action = (changePassword ? "?/changePass" : "?/updatePass");
+    if(useremail) {
+        email = useremail;
+    } else if (form?.error?.email) {
+        email = form?.error?.email;
+    } else {
+        email = email;
+    }
+
+    const action = changePassword ? "?/changePass" : "?/updatePass";
 </script>
 
 <section>
     <form method="post" action={action} class="email_form">
-        <input type="eml" name="eml" id="eml" class="inp" placeholder="Enter your email" value={useremail} autocomplete="off" disabled/>
+        <input type="eml" name="eml" id="eml" class="inp" placeholder="Enter your email" value={email} autocomplete="off" disabled/>
 
         <input type="hidden" name="email" id="email" class="inp" placeholder="Enter your email" value={email} autocomplete="off" />
-        <input type="hidden" name="token" id="token" value="" />
+        <input type="hidden" name="token" id="token" value={token} />
 
         <div class={changePassword ? "hidden" : "password"}>
             <input type="password" name="old-password" id="old-password" class="inp" placeholder="Old Password" autocomplete="off">

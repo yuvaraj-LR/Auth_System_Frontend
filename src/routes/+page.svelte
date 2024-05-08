@@ -1,21 +1,19 @@
 <script>
   import { enhance } from "$app/forms";
   export let data;
-  console.log(data, "...........");
 
   let username = data?.userdata?.userData?.name;
-
 </script>
 
 <section class="home"> 
 
   <div class="navbar flex flex_space_between">
+    <a href="/login/password/updatepassword"><button class="logout_btn">Forget Password</button></a>
+
     <h2>
       <span></span>
       <span>Welcome {username}</span>
     </h2>
-
-    <button class="logout_btn"><a href="/login/password/updatepassword">Forget Password</a></button>
 
     <form class="flex" action="?/logout" method="post" use:enhance>
       <button class="logout_btn" type="submit" formaction="?/logout">Logout</button>
