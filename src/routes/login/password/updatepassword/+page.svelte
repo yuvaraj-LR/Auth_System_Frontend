@@ -5,6 +5,8 @@
     export let form;
     export let data;
 
+    let useremail = data?.userdata?.userData?.email;
+
     let email = data?.username;
     const changePassword = false;
 </script>   
@@ -20,7 +22,7 @@
             </div>
 
             <div class="email_login w-100">
-                <UpdatePassword {email} {form} {data} {changePassword}/>
+                <UpdatePassword {email} {form} {data} {changePassword} {useremail}/>
             </div>
         </div>
     </div>

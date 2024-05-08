@@ -1,6 +1,7 @@
 <script>
     export let email;
     export let changePassword;
+    export let useremail;
 
     export let form;
     export let data;
@@ -12,7 +13,7 @@
 
 <section>
     <form method="post" action={action} class="email_form">
-        <input type="eml" name="eml" id="eml" class="inp" placeholder="Enter your email" value={email} autocomplete="off" disabled/>
+        <input type="eml" name="eml" id="eml" class="inp" placeholder="Enter your email" value={useremail} autocomplete="off" disabled/>
 
         <input type="hidden" name="email" id="email" class="inp" placeholder="Enter your email" value={email} autocomplete="off" />
         <input type="hidden" name="token" id="token" value="" />

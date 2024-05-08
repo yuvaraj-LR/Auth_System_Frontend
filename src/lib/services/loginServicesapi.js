@@ -103,3 +103,18 @@ export const updatePassword = async (payload) => {
     return response;
 }
 
+// Get user details.
+export const getUserDetails = async (token) => {
+    const options = {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            authorization: token
+        }
+    }
+
+    const getUserDetailsResponse = await fetch(`${baseURL}getDetails`, options);
+    const response = await getUserDetailsResponse.json();
+    return response;
+}
+
