@@ -12,7 +12,7 @@
 
     <h2>
       <span></span>
-      <span>Welcome {username}</span>
+      <span>Welcome {username ? username : ""}</span>
     </h2>
 
     <form class="flex" action="?/logout" method="post" use:enhance>

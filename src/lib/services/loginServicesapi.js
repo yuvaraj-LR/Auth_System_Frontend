@@ -135,3 +135,17 @@ export const getUserDetails = async (token) => {
     return response;
 }
 
+export const googleSignIn = async (payload) => {
+    const options = {
+        method: "POST",
+        body: JSON.stringify(payload),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }
+
+    const signinResponse = await fetch(`${baseURL}googlelogin`, options);
+    const response = await signinResponse.json();
+
+    return response;
+}

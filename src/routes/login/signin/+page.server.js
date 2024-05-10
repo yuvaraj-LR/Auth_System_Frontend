@@ -1,4 +1,4 @@
-import { signIn, sendOTP, sendForgetPasswordLink } from "$lib/services/loginServicesapi";
+import { signIn, sendOTP, sendForgetPasswordLink, googleSignIn } from "$lib/services/loginServicesapi";
 import { redirect } from "@sveltejs/kit";
 
 export async function load({cookies}) {
@@ -75,7 +75,7 @@ export const actions = {
 
     updatePass: async({cookies, request}) => {
         const formData = await request.formData();
-        console.log(formData, "formDataa....");
+
         const username = formData.get("email");
 
         console.log(username, "userDetailsss....");
@@ -103,6 +103,28 @@ export const actions = {
 
         if(Object.keys(errorMessage).length !== 0) {
             return {"error": errorMessage}
+        }
+    },
+
+    googleLogin: async({cookies, request}) => {
+        const formData = await request.formData();
+
+        const token = formData.get("token");
+        const gid = formData.get("gid");
+
+        const payload = {
+            token,
+            gid
+        }
+
+        const signinResponse = await googleSignIn(payload);
+        console.log(signinResponse, "respp....");
+
+        if(signinResponse?.success) {
+            cookies.set("token", signinResponse.token, {path: "/"});
+            throw redirect(301, "/");
+        } else {
+            console.log("Error in signin in google login.");
         }
     }
 }
