@@ -94,11 +94,11 @@
         border: 2px solid #aaaaaa;
         background-color: transparent;
         padding: 5px 0;
+        cursor: pointer;
     }
 
-    .google-signin-button:hover() {
+    .google-signin-button:hover {
         border: 2px solid #555;
-        cursor: pointer;
     }
 
     .seperator {
