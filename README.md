@@ -14,6 +14,14 @@ npm create svelte@latest
 npm create svelte@latest my-app
 ```
 
+## Install npm
+
+You have to install npm 
+
+```
+  npm i
+```
+
 ## Developing
 
 Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
