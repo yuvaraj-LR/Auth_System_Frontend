@@ -7,7 +7,7 @@
 
 <section class="home"> 
 
-  <div class="navbar flex flex_space_between">
+  <div class="flex flex_space_between navbar">
     <a href="/login/password/updatepassword"><button class="logout_btn">Forget Password</button></a>
 
     <h2>
@@ -33,6 +33,11 @@
     display: flex;
     align-items: center;
     padding-inline: 1.5rem;
+    flex-direction: column;
+  }
+
+  h2 {
+    order: -1;
   }
 
   .bg_img {
@@ -43,6 +48,16 @@
 
   .flex_space_between {
     height: auto;
+  }
+
+  @media (min-width: 768px) {
+    .navbar {
+      flex-direction: row;
+    }
+
+    h2 {
+      order: 0;
+    }
   }
     
 </style>
